@@ -19,12 +19,12 @@ app.use('/', webRoutes)
 
 
 
-connection.query(
-    'select * from Users u',
-    function(err, results, fields) {
-      console.log(">>> results = ",results);
-    }
-);
+// connection.query(
+//     'select * from Users u',
+//     function(err, results, fields) {
+//       console.log(">>> results = ",results);
+//     }
+// );
 
 app.listen(port, hostname, () => {
   console.log(`Example app listening on port ${port}`)
