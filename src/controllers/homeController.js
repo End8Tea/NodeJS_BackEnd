@@ -19,6 +19,10 @@ const getCreatePage = (req, res) => {
     res.render('create.ejs');
 }
 
+const getUpdatePage = (req, res) => {
+    res.render('edit.ejs');
+}
+
 const postCreateUsers = async (req, res) =>{
     let email = req.body.email;
     let name = req.body.myname;
@@ -41,9 +45,9 @@ const postCreateUsers = async (req, res) =>{
         `INSERT INTO Users (email, name, city) VALUES(?, ?, ?)`, [email, name, city]
     );
     console.log('>>>Check results', results);
-    res.send("Suceed !");
+    res.render('createNew.ejs');
 }
 
 module.exports = {
-    getHomepage, getABC, getHuuThanh, postCreateUsers, getCreatePage
+    getHomepage, getABC, getHuuThanh, postCreateUsers, getCreatePage, getUpdatePage
 }
