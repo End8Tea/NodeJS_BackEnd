@@ -1,10 +1,8 @@
 const connection = require('../config/database.js');
-const {getAllUsers, getUserById, updateUserById} = require('../services/CRUDService.js');
+const {getAllUsers, getUserById, updateUserById, deleteUserById} = require('../services/CRUDService.js');
 const getHomepage = async (req, res) => {
     let results = await getAllUsers();
     return res.render('home.ejs', {listUsers: results});
-
-    
 }
 
 const getABC = (req, res) => {
@@ -25,11 +23,16 @@ const getUpdatePage = async (req, res) => {
     res.render('edit.ejs', {userEdit : user});
 }
 
+const getDeletePage = async (req, res) => {
+    const userId = req.params.id;
+    let user = await getUserById(userId);
+    res.render('delete.ejs', {userDelete : user});
+}
+
 const postCreateUsers = async (req, res) =>{
     let email = req.body.email;
     let name = req.body.myname;
     let city = req.body.city;
-    console.log('email = ', email, ' name = ', name, ' city = ', city);
     
 
     // connection.query (
@@ -46,8 +49,7 @@ const postCreateUsers = async (req, res) =>{
     let [results, fields] = await connection.query(
         `INSERT INTO Users (email, name, city) VALUES(?, ?, ?)`, [email, name, city]
     );
-    console.log('>>>Check results', results);
-    res.render('createNew.ejs');
+    res.redirect('/');
 }
 
 const postUpdateUsers = async (req, res) => {
@@ -61,7 +63,14 @@ const postUpdateUsers = async (req, res) => {
     res.redirect('/');
 }
 
+const postDeleteUsers = async (req, res) => {
+    const deleteId = req.body.userId;
+    await deleteUserById(deleteId);
+
+    res.redirect('/');
+}
+
 module.exports = {
-    getHomepage, getABC, getHuuThanh, postCreateUsers, getCreatePage, getUpdatePage
-    , postUpdateUsers
+    getHomepage, getABC, getHuuThanh, postCreateUsers, getCreatePage, getUpdatePage, getDeletePage
+    , postUpdateUsers, postDeleteUsers
 }
