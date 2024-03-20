@@ -1,23 +1,36 @@
-const {getHomepage, getABC, getCreatePage, getHuuThanh, getUpdatePage, getDeletePage, postCreateUsers, postUpdateUsers, postDeleteUsers} = require('../controllers/homeController.js');
-const express = require('express');
+const {
+  getHomepage,
+  getABC,
+  getUsers,
+  getCreatePage,
+  getHuuThanh,
+  getUpdatePage,
+  getDeletePage,
+  postCreateUsers,
+  postUpdateUsers,
+  postDeleteUsers,
+} = require("../controllers/homeController.js");
+const express = require("express");
 const router = express.Router();
 //khai bao route
-router.get('/', getHomepage); 
-  
-router.get('/abc', getABC);
+router.get("/", getHomepage);
 
-router.get('/create', getCreatePage);
+router.get("/abc", getABC);
 
-router.get('/HuuThanh', getHuuThanh);
+router.get("/users", getUsers);
 
-router.get('/update/:id', getUpdatePage);
+router.get("/create", getCreatePage);
 
-router.get('/delete/:id', getDeletePage)
+router.get("/HuuThanh", getHuuThanh);
 
-router.post('/create-users', postCreateUsers);
+router.get("/update/:id", getUpdatePage);
 
-router.post('/update-users', postUpdateUsers);
+router.get("/delete/:id", getDeletePage);
 
-router.post('/delete-users', postDeleteUsers);
+router.post("/create-users", postCreateUsers);
+
+router.post("/update-users", postUpdateUsers);
+
+router.post("/delete-users", postDeleteUsers);
 
 module.exports = router;

@@ -1,23 +1,19 @@
-    
-require('dotenv').config();
-const express = require('express') //import express
+require("dotenv").config();
+const express = require("express"); //import express
 
-const configViewEngine = require('./config/viewEngine');
-const webRoutes = require('./routes/web.js');
-const connection = require('./config/database.js');
-const app = express() //a pp express
+const configViewEngine = require("./config/viewEngine");
+const webRoutes = require("./routes/web.js");
+const connection = require("./config/database.js");
+const app = express(); //a pp express
 const port = process.env.PORT || 8888; //port
 const hostname = process.env.HOST_NAME;
 
-
 //config req.body
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 //config template engine
 configViewEngine(app);
-app.use('/', webRoutes)
-
-
+app.use("/", webRoutes);
 
 // connection.query(
 //     'select * from Users u',
@@ -27,5 +23,5 @@ app.use('/', webRoutes)
 // );
 
 app.listen(port, hostname, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+  console.log(`Example app listening on port ${port}`);
+});

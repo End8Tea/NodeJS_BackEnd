@@ -1,42 +1,42 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Update User</title>
-    <link rel="stylesheet" href="/css/styles.css">
-</head>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
 
-<body>
+  <body>
     <div class="topnav">
-        <a href="/">Home</a>
-        <a href="/create">Create Users</a>
+      <a href="/">Home</a>
+      <a href="/create">Create Users</a>
     </div>
     <div class="form-add-new">
-        <form action="/update-users" method="post">
-            <fieldset>
-                <legend>Update an User</legend>
-                <div class="input-group d-none">
-                    <label>Id: </label>
-                    <input type="text" value="<%= userEdit.id %>" name="userId"/>
-                </div>
-                <div class="input-group">
-                    <label>Email: </label>
-                    <input type="text" value="<%= userEdit.email %>" name="email"/>
-                </div>
-                <div class="input-group">
-                    <label>Name: </label>
-                    <input type="text" value="<%= userEdit.name %>" name="myname"/>
-                </div>
-                <div class="input-group">
-                    <label>City: </label>
-                    <input type="text" value="<%= userEdit.city %>" name="city"/>
-                </div>
+      <form action="/update-users" method="post">
+        <fieldset>
+          <legend>Update an User</legend>
+          <div class="input-group d-none">
+            <label>Id: </label>
+            <input type="text" value="<%= userEdit.id %>" name="userId" />
+          </div>
+          <div class="input-group">
+            <label>Email: </label>
+            <input type="text" value="<%= userEdit.email %>" name="email" />
+          </div>
+          <div class="input-group">
+            <label>Name: </label>
+            <input type="text" value="<%= userEdit.name %>" name="myname" />
+          </div>
+          <div class="input-group">
+            <label>City: </label>
+            <input type="text" value="<%= userEdit.city %>" name="city" />
+          </div>
 
-                <div class="button">
-                    <button>Save</button>
-                </div>
-            </fieldset>
-        </form>
+          <div class="button">
+            <button>Save</button>
+          </div>
+        </fieldset>
+      </form>
     </div>
-</body>
+  </body>
 </html>
