@@ -1,5 +1,5 @@
 const connection = require("../config/database.js");
-const db = require("../models/models/index.js");
+const db = require("../models/index.js");
 
 
 const createNewUser = async (email, name, city) => {
@@ -21,7 +21,7 @@ const getAllUsers = async () => {
 
 const getUserById = async (userId) => {
   let [results, fields] = await connection.query(
-    "select * from Users u where ID = ?",
+    "select * from Users where ID = ?",
     userId
   );
 
@@ -32,7 +32,7 @@ const getUserById = async (userId) => {
 const updateUserById = async (email, name, city, userId) => {
   let [results, fields] = await connection.query(
     `UPDATE Users 
-        SET email = ?, name = ?, city = ?
+        SET Email = ?, Name = ?, City = ?
         WHERE ID = ?
         `,
     [email, name, city, userId]

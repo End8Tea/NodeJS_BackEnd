@@ -2,6 +2,7 @@ const connection = require("../config/database.js");
 // const bcrypt = require("bcryptjs");
 // const salt = bcrypt.genSaltSync(10);
 const {
+  createNewUser,
   getAllUsers,
   getUserById,
   updateUserById,
@@ -29,13 +30,13 @@ const getCreatePage = (req, res) => {
 };
 
 const getUpdatePage = async (req, res) => {
-  const userId = req.params.id;
+  const userId = req.params.ID;
   let user = await getUserById(userId);
   res.render("edit.ejs", { userEdit: user });
 };
 
 const getDeletePage = async (req, res) => {
-  const userId = req.params.id;
+  const userId = req.params.ID;
   let user = await getUserById(userId);
   res.render("delete.ejs", { userDelete: user });
 };
