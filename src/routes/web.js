@@ -23,9 +23,9 @@ router.get("/create", getCreatePage);
 
 router.get("/HuuThanh", getHuuThanh);
 
-router.get("/update/:id", getUpdatePage);
+router.get("/update/:ID", getUpdatePage);
 
-router.get("/delete/:id", getDeletePage);
+router.get("/delete/:ID", getDeletePage);
 
 router.post("/create-users", postCreateUsers);
 

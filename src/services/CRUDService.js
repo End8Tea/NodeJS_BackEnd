@@ -1,4 +1,18 @@
 const connection = require("../config/database.js");
+const db = require("../models/models/index.js");
+
+
+const createNewUser = async (email, name, city) => {
+    try{
+      await db.User.save({
+        Email: email,
+        Name: name,
+        City: city
+      })
+    } catch(error){
+      console.log(">>> check error: ", error);
+    }
+};
 
 const getAllUsers = async () => {
   let [results, fields] = await connection.query("select * from Users");
@@ -7,7 +21,7 @@ const getAllUsers = async () => {
 
 const getUserById = async (userId) => {
   let [results, fields] = await connection.query(
-    "select * from Users u where id = ?",
+    "select * from Users u where ID = ?",
     userId
   );
 
@@ -19,7 +33,7 @@ const updateUserById = async (email, name, city, userId) => {
   let [results, fields] = await connection.query(
     `UPDATE Users 
         SET email = ?, name = ?, city = ?
-        WHERE id = ?
+        WHERE ID = ?
         `,
     [email, name, city, userId]
   );
@@ -30,12 +44,13 @@ const updateUserById = async (email, name, city, userId) => {
 const deleteUserById = async (userId) => {
   let [results, fields] = await connection.query(
     `DELETE FROM Users 
-        WHERE id = ?`,
+        WHERE ID = ?`,
     [userId]
   );
 };
 
 module.exports = {
+  createNewUser,
   getAllUsers,
   getUserById,
   updateUserById,
